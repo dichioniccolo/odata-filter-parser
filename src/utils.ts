@@ -20,23 +20,6 @@ export function setDeepValue(
   }
 
   return obj;
-  // if (objectKeys.length === 1) {
-  //   obj[objectKeys[0]] = {
-  //     [method]: value,
-  //   };
-  // } else {
-  //   const key = objectKeys.shift();
-  //   if (key) {
-  //     obj[key] = setDeepValue(
-  //       !(key in obj) ? {} : obj[key],
-  //       objectKeys,
-  //       method,
-  //       value
-  //     );
-  //   }
-  // }
-
-  // return obj;
 }
 
 export function getParts(value: string): string[] {
