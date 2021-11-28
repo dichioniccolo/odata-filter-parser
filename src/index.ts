@@ -1,5 +1,16 @@
 import { createInstance, getParts } from "./utils";
-import * as parsers from "./parsers";
+import * as defaultParsers from "./parsers";
+import { Parser } from "./parsers/Parser";
+
+export const parsers: any[] = [
+  defaultParsers.ContainsParser,
+  defaultParsers.EqualsParser,
+  defaultParsers.LessThanParser,
+];
+
+export function addParser(parser: typeof Parser) {
+  parsers.push(parser);
+}
 
 export function parse(value: string): any {
   return getParts(value).reduce((acc, part) => {
