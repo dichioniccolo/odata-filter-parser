@@ -1,0 +1,46 @@
+{
+  "name": "@dichioniccolo/odata-filter-parser",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsnd --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "prepublish": "yarn build",
+    "test": "jest"
+  },
+  "description": "OData filter parser",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dichioniccolo/odata-filter-parser.git"
+  },
+  "keywords": [
+    "odata",
+    "parser",
+    "odata-parser",
+    "odata-filter-parser",
+    "filter-parser"
+  ],
+  "author": "Niccolò Di Chio (https://www.niccolodichio.it)",
+  "bugs": {
+    "url": "https://github.com/dichioniccolo/odata-filter-parser/issues"
+  },
+  "homepage": "https://github.com/dichioniccolo/odata-filter-parser#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.2"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ES2021",
+    "lib": ["dom", "esnext"],
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "commonjs"
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "test"]
+}
