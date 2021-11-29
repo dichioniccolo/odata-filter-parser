@@ -38,7 +38,7 @@ console.log(parsed);
 Custom parsers can also be used. They will have precedence over builtin ones.
 Every custom parser should extend from the Parser class provided by the package
 ```typescript
-import { parse, Parser } from '@dichioniccolo/odata-filter-parser'
+import { parse, Parser, Operators } from '@dichioniccolo/odata-filter-parser'
 
 class DateParser extends Parser {
   // This is an example regex. A good regex would also check for the date based on the month.
