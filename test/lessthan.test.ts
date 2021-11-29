@@ -28,7 +28,7 @@ test("it creates a composite object", () => {
       b: {
         c: {
           d: {
-            lt: 1,
+            [Operators.LESS_THAN]: 1,
           },
         },
       },

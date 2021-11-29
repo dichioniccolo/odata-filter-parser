@@ -28,7 +28,7 @@ test("it creates a composite object", () => {
       b: {
         c: {
           d: {
-            equals: 1,
+            [Operators.EQUALS]: 1,
           },
         },
       },
