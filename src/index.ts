@@ -1,9 +1,25 @@
 import { createInstance, getParts } from "./utils";
-import * as parsers from "./parsers";
+import * as defaultParsers from "./parsers";
+import { Parser } from "./parsers/Parser";
 
-export function parse(value: string): any {
+export function parse(
+  value: string,
+  customParsers: Record<string, typeof Parser> = {}
+): any {
   return getParts(value).reduce((acc, part) => {
-    for (const parser of Object.values(parsers)) {
+    // We want to give priority to the custom parsers
+    for (const parser of Object.values(customParsers)) {
+      if (parser.isOfType(part)) {
+        const instance: Parser = new (<any>customParsers)[parser.name](part);
+
+        return {
+          ...acc,
+          ...instance.parse(acc),
+        };
+      }
+    }
+
+    for (const parser of Object.values(defaultParsers)) {
       if (parser.isOfType(part)) {
         const instance = createInstance(parser.name, part);
 
