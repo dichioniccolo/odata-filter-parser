@@ -5,7 +5,7 @@ export class LessThanParser extends Parser {
   static REGEX = /(\w*) (lt) (datetimeoffset'(.*)'|(.*)|[0-9]*)/;
 
   constructor(protected value: string) {
-    super(value, Operators.LESS_THEN);
+    super(value, Operators.LESS_THAN);
   }
 
   static isOfType(value: string) {
