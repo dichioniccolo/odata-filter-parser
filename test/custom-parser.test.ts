@@ -3,8 +3,7 @@ import { Parser } from "../src/parsers/Parser";
 
 class DateParser extends Parser {
   static DATE_REGEX =
-    /(\w*) (eq) (?:(?:1[6-9]|[2-9]\d)?\d{2})(?:(?:(\/|-|\.)(?:0?[13578]|1[02])\3(?:31))|(?:(\/|-|\.)(?:0?[13-9]|1[0-2])\4(?:29|30)))$|(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\/|-|\.)0?2\5(?:29)$|(?:(?:1[6-9]|[2-9]\d)?\d{2})(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\6(?:0?[1-9]|1\d|2[0-8])T00:00:00.000Z$/m;
-  static FIELD_REGEX = /(\w*)/;
+    /(\w*) (eq) ((19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])T\d{2}:\d{2}:\d{2}.\d{3}Z)/;
 
   constructor(protected value: string) {
     super(value, "");
@@ -15,15 +14,13 @@ class DateParser extends Parser {
   }
 
   parse(previous: unknown): Record<string, any> {
-    const field = this.value.match(DateParser.FIELD_REGEX);
-    const date = this.value.match(DateParser.DATE_REGEX);
+    const match = this.value.match(DateParser.DATE_REGEX);
 
-    if (!field || !date) {
+    if (!match) {
       return {};
     }
 
-    const [, left] = field;
-    const [right] = date;
+    const [, left, operator, right] = match;
 
     const methods = ["gte", "lte"];
     const values = [right, `${right.substring(0, 10)}T23:59:59.999Z`];
@@ -58,11 +55,11 @@ class DateParser extends Parser {
 
 test("parses the data with the new custom parser", () => {
   expect(
-    parse("createdAt eq 2021-11-27T00:00:00.000Z", { DateParser })
+    parse("createdAt eq 2021-11-29T00:00:00.000Z", { DateParser })
   ).toStrictEqual({
     createdAt: {
-      gte: "2021-11-27T00:00:00.000Z",
-      lte: "2021-11-27T23:59:59.999Z",
+      gte: "2021-11-29T00:00:00.000Z",
+      lte: "2021-11-29T23:59:59.999Z",
     },
   });
 });
