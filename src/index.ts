@@ -1,8 +1,9 @@
 import { createInstance, getParts } from "./utils";
 import * as defaultParsers from "./parsers";
 import { Parser } from "./parsers/Parser";
+import { Operators } from "./operators";
 
-export { Parser };
+export { Parser, Operators };
 
 export function parse(
   value: string,
