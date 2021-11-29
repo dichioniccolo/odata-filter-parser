@@ -2,6 +2,8 @@ import { createInstance, getParts } from "./utils";
 import * as defaultParsers from "./parsers";
 import { Parser } from "./parsers/Parser";
 
+export { Parser };
+
 export function parse(
   value: string,
   customParsers: Record<string, typeof Parser> = {}
