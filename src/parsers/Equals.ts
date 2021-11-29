@@ -2,7 +2,7 @@ import { Operators } from "../operators";
 import { Parser } from "./Parser";
 
 export class EqualsParser extends Parser {
-  static REGEX = /(\w*) (eq) (datetimeoffset'(.*)'|(.*)|[0-9]*)/;
+  static REGEX = /(.*) (eq) (datetimeoffset'(.*)'|(.*)|[0-9]*)/;
 
   constructor(protected value: string) {
     super(value, Operators.EQUALS);

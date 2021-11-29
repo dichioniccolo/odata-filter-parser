@@ -15,9 +15,23 @@ test("it converts to to the correct value", () => {
   });
 });
 
-test("it parses multiple eq", () => {
+test("it parses multiple lt", () => {
   expect(parse("a lt 1 and b lt false")).toStrictEqual({
     a: { [Operators.LESS_THAN]: 1 },
     b: { [Operators.LESS_THAN]: false },
+  });
+});
+
+test("it creates a composite object", () => {
+  expect(parse("a/b/c/d lt 1")).toStrictEqual({
+    a: {
+      b: {
+        c: {
+          d: {
+            lt: 1,
+          },
+        },
+      },
+    },
   });
 });

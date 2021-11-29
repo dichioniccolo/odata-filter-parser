@@ -21,3 +21,17 @@ test("it parses multiple eq", () => {
     b: { [Operators.EQUALS]: false },
   });
 });
+
+test("it creates a composite object", () => {
+  expect(parse("a/b/c/d eq 1")).toStrictEqual({
+    a: {
+      b: {
+        c: {
+          d: {
+            equals: 1,
+          },
+        },
+      },
+    },
+  });
+});
