@@ -1,4 +1,3 @@
-import * as handlers from "./parsers";
 import { Parser } from "./parsers/Parser";
 
 export function setDeepValue(
@@ -31,6 +30,10 @@ export function getParts(value: string): string[] {
   return value.split("and").map((v) => v.trim());
 }
 
-export function createInstance(className: string, ...args: any[]): Parser {
-  return new (<any>handlers)[className](...args);
+export function createInstance(
+  instances: any,
+  className: string,
+  ...args: any[]
+): Parser {
+  return new (<any>instances)[className](...args);
 }

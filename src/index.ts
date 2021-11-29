@@ -15,7 +15,7 @@ export function parse(
         continue;
       }
 
-      const instance: Parser = new (<any>customParsers)[parser.name](part);
+      const instance = createInstance(customParsers, parser.name, part);
 
       return {
         ...acc,
@@ -28,7 +28,7 @@ export function parse(
         continue;
       }
 
-      const instance = createInstance(parser.name, part);
+      const instance = createInstance(defaultParsers, parser.name, part);
 
       return {
         ...acc,
