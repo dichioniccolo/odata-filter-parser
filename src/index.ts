@@ -7,7 +7,7 @@ export { Parser };
 export function parse(
   value: string,
   customParsers: Record<string, typeof Parser> = {}
-): any {
+): unknown {
   return getParts(value).reduce((acc, part) => {
     // We want to give priority to the custom parsers
     for (const parser of Object.values(customParsers)) {

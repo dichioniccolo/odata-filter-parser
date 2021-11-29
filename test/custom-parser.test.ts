@@ -1,4 +1,5 @@
 import { parse } from "../src";
+import { Operators } from "../src/operators";
 import { Parser } from "../src/parsers/Parser";
 
 class DateParser extends Parser {
@@ -22,7 +23,7 @@ class DateParser extends Parser {
 
     const [, left, operator, right] = match;
 
-    const methods = ["gte", "lte"];
+    const methods = [Operators.GREATER_THAN_EQUAL, Operators.LESS_THAN_EQUAL];
     const values = [right, `${right.substring(0, 10)}T23:59:59.999Z`];
 
     return this.setDeepValue(previous, this.leftValue(left), methods, values);
