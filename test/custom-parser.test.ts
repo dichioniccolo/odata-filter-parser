@@ -60,8 +60,8 @@ test("parses the data with the new custom parser", () => {
   ).toStrictEqual({
     test: {
       createdAt: {
-        gte: "2021-11-29T00:00:00.000Z",
-        lte: "2021-11-29T23:59:59.999Z",
+        [Operators.GREATER_THAN_EQUAL]: "2021-11-29T00:00:00.000Z",
+        [Operators.LESS_THAN_EQUAL]: "2021-11-29T23:59:59.999Z",
       },
     },
   });

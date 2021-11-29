@@ -26,10 +26,10 @@ const parsed = parse(filter);
 /*
 The result will be an object like this:
 {
-  a: { b: { [Operators.CONTAINS]: "c" } },
-  d: { e: { [Operators.CONTAINS]: "f" } },
-  g: { [Operators.EQUALS]: 1 },
-  h: { [Operators.EQUALS]: false },
+  a: { b: { contains: "c" } },
+  d: { e: { contains: "f" } },
+  g: { equals: 1 },
+  h: { equals: false },
 }
 */
 console.log(parsed);
