@@ -3,7 +3,7 @@ import { Parser } from "../src/parsers/Parser";
 
 class DateParser extends Parser {
   static DATE_REGEX =
-    /(\w*) (eq) ((19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])T\d{2}:\d{2}:\d{2}.\d{3}Z)/;
+    /(.*) (eq) ((19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])T\d{2}:\d{2}:\d{2}.\d{3}Z)/;
 
   constructor(protected value: string) {
     super(value, "");
@@ -55,11 +55,13 @@ class DateParser extends Parser {
 
 test("parses the data with the new custom parser", () => {
   expect(
-    parse("createdAt eq 2021-11-29T00:00:00.000Z", { DateParser })
+    parse("test/createdAt eq 2021-11-29T00:00:00.000Z", { DateParser })
   ).toStrictEqual({
-    createdAt: {
-      gte: "2021-11-29T00:00:00.000Z",
-      lte: "2021-11-29T23:59:59.999Z",
+    test: {
+      createdAt: {
+        gte: "2021-11-29T00:00:00.000Z",
+        lte: "2021-11-29T23:59:59.999Z",
+      },
     },
   });
 });
