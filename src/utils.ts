@@ -1,4 +1,5 @@
 import { Parser } from "./parsers/Parser";
+import { Maybe } from "./types";
 
 export function setDeepValue(
   obj: any,
@@ -21,9 +22,13 @@ export function setDeepValue(
   return obj;
 }
 
-export function getParts(value: string): string[] {
+export function getParts(value: Maybe<string>): string[] | null {
+  if (!value || value.trim().length === 0) {
+    return null;
+  }
+
   if (value.startsWith("(") && value.endsWith(")")) {
-    value = value.substr(1, value.length - 2);
+    value = value.substring(1, value.length - 1);
   }
 
   // TODO: Here we might want to include other operators like OR

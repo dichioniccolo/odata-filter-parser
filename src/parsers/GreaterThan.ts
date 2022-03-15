@@ -19,7 +19,7 @@ export class GreaterThanParser extends Parser {
       return {};
     }
 
-    const [, left, operator, right] = match;
+    const [, left, , right] = match;
 
     return this.createObject(previous, left, right);
   }
