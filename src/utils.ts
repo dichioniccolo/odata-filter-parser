@@ -32,7 +32,7 @@ export function getParts(value: Maybe<string>): string[] | null {
   }
 
   // TODO: Here we might want to include other operators like OR
-  return value.split("and").map((v) => v.trim());
+  return value.split(" and ").map((v) => v.trim());
 }
 
 export function createInstance(
